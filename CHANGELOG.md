@@ -1,6 +1,10 @@
+# 2.0.1
+
+Readme updates
+
 # 2.0.0
 
-Breaking:
+**Breaking:**
 
 - Removed the `metadata` field from the log entry format. The default is all object data is assigned to the root of the log entry.
 

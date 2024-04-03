@@ -13,14 +13,14 @@ send logs using the client [v2.LogsApi#submitLog](https://datadoghq.dev/datadog-
 
 **Note: This transport only works in the main process since the Datadog API client is not compatible with the renderer process.**
 
-# Table of Contents
+# Table of contents
 
 - [Installation](#installation)
 - [Configuration options](#configuration-options)
 - [Logging](#logging)
-    - [Log entry format](#log-entry-format)
-    - [Log entry format behavior](#log-entry-format-behavior)
-    - [Adding context data for all logs](#adding-context-data-for-all-logs)
+  - [Log entry format sent to datadog](#log-entry-format-sent-to-datadog)
+  - [Log entry format behavior](#log-entry-format-behavior)
+  - [Adding context data for all logs](#adding-context-data-for-all-logs)
 
 # Installation
 
@@ -176,6 +176,12 @@ const logger = new LogLayer({
   },
   // See LogLayer documentation for more options
   // like setting the field for context data
+  context: {
+    fieldName: 'context',
+  },
+  metadata: {
+    fieldName: 'metadata',
+  },
 }).withContext({
   // or whatever you use to identify the user
   userId: '1234',
