@@ -93,8 +93,7 @@ export interface DDTransportOptions {
    */
   onInit?: () => void
   /**
-   * Error handler for when the submitLog() call fails. See readme on how to
-   * properly implement this callback.
+   * Error handler for when the submitLog() call fails.
    */
   onError?: (err: any, logs?: Array<Record<string, any>>) => void
   /**
