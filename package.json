@@ -1,13 +1,13 @@
 {
-  "name": "example-typescript-package",
-  "version": "0.2.2",
-  "description": "",
+  "name": "electron-log-transport-datadog",
+  "version": "1.0.0",
+  "description": "Send logs to Datadog from electron-log in Electron.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.js",
   "scripts": {
     "prepublishOnly": "npm run clean && npm run test && npm run lint && npm run build",
-    "build": "npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:types",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "node tools/cleanup cjs && tsc -p config/tsconfig.cjs.json",
     "build:esm": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json",
     "build:types": "node tools/cleanup types && tsc -p config/tsconfig.types.json",
@@ -26,28 +26,32 @@
     "dist"
   ],
   "keywords": [
-    "example",
-    "typescript",
-    "npm",
-    "package",
-    "sample",
-    "boilerplate",
-    "starter",
-    "demo",
-    "cjs",
-    "esm"
+    "electron",
+    "datadog",
+    "log",
+    "logging",
+    "logger",
+    "transport",
+    "electron-log"
   ],
-  "author": "Tom Chen <tomchen.org@gmail.com>",
+  "author": "Theo Gravity <theo@suteki.nu>",
   "license": "MIT",
-  "homepage": "https://github.com/tomchen/example-typescript-package",
+  "homepage": "https://github.com/theogravity/electron-log-transport-datadog#readme",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tomchen/example-typescript-package.git"
+    "url": "git@github.com:theogravity/electron-log-transport-datadog.git"
   },
   "bugs": {
-    "url": "https://github.com/tomchen/example-typescript-package/issues"
+    "url": "https://github.com/theogravity/electron-log-transport-datadog/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@datadog/datadog-api-client": "^1.23.0",
+    "exit-hook": "^4.0.0",
+    "p-retry": "^6.2.0"
+  },
+  "peerDependencies": {
+    "electron-log": "^5.1.2"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.6.3",
     "@types/jest": "^29.5.12",
