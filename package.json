@@ -1,6 +1,6 @@
 {
   "name": "electron-log-transport-datadog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Send logs to Datadog from electron-log in Electron.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

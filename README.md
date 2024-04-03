@@ -1,4 +1,4 @@
-# electron-log-datadog
+# electron-log-transport-datadog
 
 [![NPM version](https://img.shields.io/npm/v/electron-log-transport-datadog.svg?style=flat-square)](https://www.npmjs.com/package/electron-log-transport-datadog) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
