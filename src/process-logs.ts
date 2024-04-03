@@ -89,6 +89,15 @@ export interface DDTransportOptions {
    * the send interval.
    */
   sendImmediate?: boolean;
+  /**
+   * Set to assign a field to store all metadata in the log object that is sent to datadog.
+   */
+  metadataField?: string;
+  /**
+   * Set to re-assign the field that stores all array metadata in the log object that is sent to datadog.
+   * Default is "arrayData".
+   */
+  arrayDataField?: string;
 }
 
 interface SendLogOpts {
@@ -206,18 +215,29 @@ export function dataDogTransportFactory(options: DDTransportOptions, apiInstance
       }
     }
 
-    const item: Record<string, any> = {
+    let item: Record<string, any> = {
       date: message.date.getTime(),
       level: message.level,
       message: msg,
     }
 
     if (Object.keys(metadata).length) {
-      item.metadata = metadata
+      if (options.metadataField) {
+        item[options.metadataField] = metadata
+      } else {
+        item = {
+          ...item,
+          ...metadata,
+        }
+      }
     }
 
     if (arrayData.length) {
-      item.arrayData = arrayData
+      if (options.arrayDataField){
+        item[options.arrayDataField] = arrayData
+      } else {
+        item.arrayData = arrayData
+      }
     }
 
     const logItem: HTTPLogItem = {

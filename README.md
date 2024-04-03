@@ -115,6 +115,15 @@ export interface DDTransportOptions {
    * the send interval.
    */
   sendImmediate?: boolean
+  /**
+   * Set to assign a field to store all object metadata in the log object that is sent to datadog.
+   */
+  metadataField?: string;
+  /**
+   * Set to re-assign the field that stores all array metadata in the log object that is sent to datadog.
+   * Default is "arrayData".
+   */
+  arrayDataField?: string;
 }
 ```
 
@@ -123,21 +132,19 @@ export interface DDTransportOptions {
 It is recommended you use [`loglayer`](https://github.com/theogravity/loglayer?tab=readme-ov-file#electron-log) with `electron-log` so you have a consistent logging experience across your application. It will provide standard ways
 to define metadata, handle errors, and more.
 
-## Log entry format
+## Log entry format sent to datadog
 
 ```json
 {
   "message": "This is a log message",
   "date": <millisecond unix timestamp>,
   "level": "info",
-  "metadata": {
-    "some": "metadata"
-  },
   "arrayData": [
     "some",
     "array",
     "data"
-  ]
+  ],
+  ...<metadata>
 }
 ```
 
@@ -147,8 +154,10 @@ Because `electron-log` lets you shove anything into the log methods, the followi
 the log entry to send to Datadog:
 
 - If the log entry contains a string, it will be used as the `message` field. Multiple strings will be concatenated.
-- If the log entry contains an object, it will be added to the `metadata` field.
+- If the log entry contains an object, the fields will be added to `metadata` (the log entry root).
+  * You can set a field to store all object metadata in the log object that is sent to datadog using the `metadataField` option.
 - If the log entry contains an array, it will be added to the `arrayData` field.
+  * You can set a field to store all array metadata in the log object that is sent to datadog using the `arrayDataField` option.
 
 ## Adding context data for all logs
 
@@ -165,6 +174,8 @@ const logger = new LogLayer({
     instance: log,
     type: LoggerType.ELECTRON_LOG,
   },
+  // See LogLayer documentation for more options
+  // like setting the field for context data
 }).withContext({
   // or whatever you use to identify the user
   userId: '1234',
