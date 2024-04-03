@@ -11,7 +11,7 @@ send logs using the client [v2.LogsApi#submitLog](https://datadoghq.dev/datadog-
 - Will retry failed sends.
 - Can disable batch sending and always send for each log entry.
 
-**Note: This transport only works in the main process. since the Datadog API client is not compatible with the renderer process.**
+**Note: This transport only works in the main process since the Datadog API client is not compatible with the renderer process.**
 
 # Table of Contents
 
