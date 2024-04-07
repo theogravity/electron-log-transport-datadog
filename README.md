@@ -1,5 +1,7 @@
 # electron-log-transport-datadog
 
+**Note: The project has has moved to [theogravity/datadog-transports](https://github.com/theogravity/datadog-transports).**
+
 [![NPM version](https://img.shields.io/npm/v/electron-log-transport-datadog.svg?style=flat-square)](https://www.npmjs.com/package/electron-log-transport-datadog) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
 Send logs from [electron-log](https://npmjs.com/package/electron-log) to [Datadog](https://www.datadoghq.com/).
